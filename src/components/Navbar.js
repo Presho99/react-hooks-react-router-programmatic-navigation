@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import {  NavLink, useHistory } from "react-router-dom";
 
 const linkStyles = {
   width: "100px",
@@ -10,15 +10,19 @@ const linkStyles = {
   color: "white",
 };
 
-function Navbar({ setIsLoggedIn }) {
+function Navbar({ onLogout }) {
   const history = useHistory();
 
-  function handleLogout() {
-    setIsLoggedIn(false);
-    history.push("/login");
-  }
+ 
 
+  function handleClick() {
+    onLogout()
+    history.push("/login")
+  }
   return (
+    // <nav>
+    //   <button onClick={handleClick}>Logout</button>
+    // </nav>
     <div>
       <NavLink
         to="/"
@@ -53,7 +57,7 @@ function Navbar({ setIsLoggedIn }) {
       >
         Login
       </NavLink>
-      <button onClick={handleLogout}>Logout</button>
+      <button onClick={handleClick}>Logout</button>
     </div>
   );
 }
